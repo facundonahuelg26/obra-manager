@@ -9,7 +9,7 @@ import ContainerAllProjects from '@/components/projects/container-all-projects'
 const Dashboard = async ({
   searchParams,
 }: {
-  searchParams?: { vs_currency?: string }
+  searchParams?: Promise<{ vs_currency?: string }>
 }) => {
   const params = await searchParams
   const vs_currency = await params?.vs_currency
