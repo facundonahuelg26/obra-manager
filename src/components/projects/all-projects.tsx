@@ -169,7 +169,7 @@ export default function AllProjects({ data }: IData) {
   }
 
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='flex flex-col gap-4 max-w-xs sm:max-w-2xl lg:max-w-full'>
       <Card>
         <TopContent
           onSearchChange={onSearchChange}
@@ -187,9 +187,12 @@ export default function AllProjects({ data }: IData) {
           columns={columns}
         />
       </Card>
+
       <Table
         aria-label='Example table with custom cells'
         bottomContent={<BottomContent total={data} />}
+        isStriped={true}
+        // className='max-w-[300px]'
       >
         <TableHeader columns={columns}>
           {(column) => (
@@ -212,6 +215,7 @@ export default function AllProjects({ data }: IData) {
                         className='capitalize'
                         color={statusColorMap[item.symbol]}
                         size='sm'
+                        radius='md'
                         variant='flat'
                       >
                         {getKeyValue(item, columnKey)}

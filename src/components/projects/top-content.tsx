@@ -48,7 +48,7 @@ const TopContent: React.FC<TopContentProps> = ({
 }) => {
   return (
     <div className='p-4 flex flex-col gap-4'>
-      <div className='flex justify-between gap-3 items-end'>
+      <div className='flex flex-wrap sm:flex-nowrap justify-between gap-3 items-end'>
         <Input
           // isClearable
           key={onGetSearchParams()}
@@ -80,9 +80,9 @@ const TopContent: React.FC<TopContentProps> = ({
         {/* <Button onPress={onSearchPress}>
           Buscar
         </Button> */}
-        <div className='flex gap-3'>
+        <div className='flex gap-3 flex-wrap sm:flex-nowrap'>
           <Dropdown>
-            <DropdownTrigger className='hidden sm:flex'>
+            <DropdownTrigger className='w-full sm:w-auto'>
               <Button
                 endContent={
                   <RenderIcon
@@ -92,6 +92,7 @@ const TopContent: React.FC<TopContentProps> = ({
                 }
                 size='md'
                 variant='flat'
+                className='flex justify-between'
               >
                 Status
               </Button>
@@ -103,6 +104,9 @@ const TopContent: React.FC<TopContentProps> = ({
               selectedKeys='{statusFilter}'
               selectionMode='multiple'
               //onSelectionChange={setStatusFilter}
+              classNames={{
+                base: ['w-64 sm:w-auto'],
+              }}
             >
               {[
                 { uid: 'active', name: 'Active' },
@@ -116,7 +120,7 @@ const TopContent: React.FC<TopContentProps> = ({
             </DropdownMenu>
           </Dropdown>
           <Dropdown>
-            <DropdownTrigger className='hidden sm:flex'>
+            <DropdownTrigger className='w-full sm:w-auto'>
               <Button
                 endContent={
                   <RenderIcon
@@ -126,6 +130,7 @@ const TopContent: React.FC<TopContentProps> = ({
                 }
                 size='md'
                 variant='flat'
+                className='flex justify-between'
               >
                 Columns
               </Button>
@@ -137,6 +142,9 @@ const TopContent: React.FC<TopContentProps> = ({
               selectedKeys='{visibleColumns}'
               selectionMode='multiple'
               // onSelectionChange={setVisibleColumns}
+              classNames={{
+                base: ['w-64 sm:w-auto'],
+              }}
             >
               {columns.map((column) => (
                 <DropdownItem key={column.uid} className='capitalize'>
@@ -146,7 +154,7 @@ const TopContent: React.FC<TopContentProps> = ({
             </DropdownMenu>
           </Dropdown>
           <Button
-            className='bg-foreground text-background font-semibold'
+            className='w-full sm:w-auto bg-foreground text-background font-semibold'
             endContent={<RenderIcon dataIcon='ic:baseline-plus' />}
             size='md'
           >
