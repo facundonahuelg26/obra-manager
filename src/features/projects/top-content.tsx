@@ -1,6 +1,6 @@
 import React from 'react'
 import { Input } from '@heroui/input'
-import RenderIcon from '../render-icon'
+import RenderIcon from '../common/render-icon'
 import {
   Dropdown,
   DropdownItem,

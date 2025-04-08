@@ -1,4 +1,4 @@
-import ContainerAllProjects from '@/components/projects/container-all-projects'
+import { ContainerAllProjects } from '@/features'
 
 // import { ROUTES } from '@/utils'
 // import { Button } from '@heroui/button'

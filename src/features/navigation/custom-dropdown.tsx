@@ -10,7 +10,7 @@ import {
   DropdownMenu,
   DropdownSection,
 } from '@heroui/dropdown'
-import RenderIcon from '../render-icon'
+import RenderIcon from '../common/render-icon'
 import { signOut } from 'next-auth/react'
 import UserData from './user-data'
 import AvatarData from './avatar-data'

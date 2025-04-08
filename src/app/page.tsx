@@ -1,7 +1,7 @@
 import { ROUTES } from '@/utils'
-import { Button } from '@heroui/button'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
+import { CustomButton } from '@/features'
 const WelcomePage = async () => {
   const t = await getTranslations('WelcomePage')
   return (
@@ -24,15 +24,14 @@ const WelcomePage = async () => {
           </p>
           <p className='text-base leading-relaxed'>{t('firstContent')}</p>
           <p className='text-base leading-relaxed mt-4'>{t('secondContent')}</p>
-          <Button
+          <CustomButton
             as={Link}
             href={ROUTES.LOGIN}
             className='w-full max-w-[320px] h-12 mt-6 text-base font-semibold'
-            color='primary'
-            variant='solid'
+            color='solidBlue'
           >
             {t('buttonLogin')}
-          </Button>
+          </CustomButton>
         </div>
       </div>
     </div>

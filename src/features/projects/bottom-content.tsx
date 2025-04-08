@@ -6,7 +6,7 @@ import {
   DropdownTrigger,
 } from '@heroui/dropdown'
 import React from 'react'
-import RenderIcon from '../render-icon'
+import RenderIcon from '../common/render-icon'
 
 interface BottomContentProps {
   total: []
