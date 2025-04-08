@@ -82,9 +82,7 @@ const Navigation = () => {
               isActive={pathname === item.link}
             >
               <Link
-                className={`w-full ${
-                  pathname === item.link && 'text-secondary'
-                }`}
+                className={`w-full ${pathname === item.link && 'text-primary'}`}
                 color='foreground'
                 href={item.link}
                 size='lg'

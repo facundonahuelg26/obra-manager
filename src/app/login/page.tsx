@@ -1,4 +1,4 @@
-import { RenderIcon } from '@/components'
+import { RenderIcon } from '@/features'
 import { Button } from '@heroui/button'
 import { signIn } from '@/auth'
 import Link from 'next/link'

@@ -12,7 +12,7 @@ import {
 } from '@heroui/table'
 import { Chip, ChipProps } from '@heroui/chip'
 import { Button } from '@heroui/button'
-import RenderIcon from '../render-icon'
+import RenderIcon from '../common/render-icon'
 import { Tooltip } from '@heroui/tooltip'
 import TopContent from './top-content'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
@@ -212,13 +212,15 @@ export default function AllProjects({ data }: IData) {
                   return (
                     <TableCell>
                       <Chip
-                        className='capitalize'
+                        // className='uppercase font-extrabold'
                         color={statusColorMap[item.symbol]}
                         size='sm'
                         radius='md'
                         variant='flat'
                       >
-                        {getKeyValue(item, columnKey)}
+                        <span className='uppercase font-semibold'>
+                          {getKeyValue(item, columnKey)}
+                        </span>
                       </Chip>
                     </TableCell>
                   )
