@@ -1,7 +1,8 @@
 export const ROUTES = {
   LOGIN: '/login',
   HOME: '/',
-  DASHBOARD: '/dashboard',
-  CONFIGURE_PROFILE: '/configure-profile',
+  PROJECTS: { MAIN: '/projects', CREATE_PROJECT: '/create-project' },
+  CALCULATE_MATERIALS: '/calculate-materials',
+  PROJECT_ANALYTICS: '/project-analytics',
   PROFILE: '/profile',
 }

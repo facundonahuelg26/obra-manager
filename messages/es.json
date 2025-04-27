@@ -1,29 +1,30 @@
 {
   "WelcomePage": {
-    "title": "Bienvenido a Radar de Salarios",
+    "title": "Bienvenido a Obra Manager",
     "text": "Para comenzar, debes",
     "linkToLogin": "iniciar sesión",
-    "firstContent": "En Radar de Salarios, te brindamos datos actualizados y confiables sobre sueldos en la industria para que puedas tomar mejores decisiones laborales.",
+    "firstContent": "En Obra Manager, te brindamos datos actualizados y confiables sobre sueldos en la industria para que puedas tomar mejores decisiones laborales.",
     "secondContent": "La transparencia salarial es clave para una mejor planificación laboral. Únete y descubre cómo se mueve el mercado en tu industria.",
     "buttonLogin": "Iniciar sesión"
   },
   "Login": {
-    "title": "Iniciar sesión en Radar de Salarios",
+    "title": "Iniciar sesión en Obra Manager",
     "text": "Quiero",
     "linkToWelcome": "volver al inicio",
     "github": "Continue with GitHub",
     "linkedin": "Continue with LinkedIn"
   },
-  "Dashboard": {
-    "title": "Conoce tu valor en el mercado con Radar de Salarios",
+  "Projects": {
+    "title": "Conoce tu valor en el mercado con Obra Manager",
     "subtitle": "Descubrí información clave sobre los salarios en tu industria para tomar decisiones con más certeza. Compará sueldos según tu puesto, experiencia y otros filtros personalizados para entender mejor tu posición en el mercado laboral.",
-    "moreInfo": "Nuestro proceso de registro es rápido y sencillo. Solo necesitaremos algunos datos para brindarte la mejor experiencia.",
-    "linkConfigureProfile": "Configurar perfil profesional"
+    "moreInfo": "Nuestro proceso de registro es rápido y sencillo. Solo necesitaremos algunos datos para brindarte la mejor experiencia."
   },
   "Navigation": {
-    "appName": "RADAR DE SALARIOS",
-    "linkDashboard": "Panel de control",
-    "linkConfigureProfile": "Configurar perfil",
+    "appName": "OBRA MANAGER",
+    "linkProjects": "Proyectos",
+    "linkCreateProject": "Crear proyecto",
+    "linkCalculateMaterials": "Calcular materiales",
+    "linkAnalytics": "Análisis de projectos",
     "userDescription": "Usuario",
     "customizeDescription": "Personalizar",
     "appearance": "Aspecto",

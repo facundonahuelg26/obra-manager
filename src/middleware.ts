@@ -8,16 +8,17 @@ export default async function middleware(req: NextRequest) {
 
   if (
     !session &&
-    (pathname === '/dashboard' ||
-      pathname === '/configure-profile' ||
+    (pathname === '/projects' ||
+      pathname === '/calculate-materials' ||
+      pathname === '/project-analytics' ||
       pathname === '/profile')
   ) {
     return NextResponse.redirect(new URL('/login', req.url))
   }
 
-  // Si el usuario está autenticado y está en /login o /, redirigir al dashboard
+  // Si el usuario está autenticado y está en /login o /, redirigir a proyectos
   if (session && (pathname === '/login' || pathname === '/')) {
-    return NextResponse.redirect(new URL('/dashboard', req.url))
+    return NextResponse.redirect(new URL('/projects', req.url))
   }
 
   return NextResponse.next()
@@ -28,8 +29,9 @@ export const config = {
   matcher: [
     '/',
     '/login',
-    '/dashboard/:path*',
-    '/configure-profile/:path*',
+    '/projects/:path*',
+    '/calculate-materials/:path*',
+    '/project-analytics/:path*',
     '/profile/:path*',
   ],
 }

@@ -14,10 +14,9 @@ import RenderIcon from '../common/render-icon'
 import { signOut } from 'next-auth/react'
 import UserData from './user-data'
 import AvatarData from './avatar-data'
-type Props = {
-  t: (key: string) => string
-}
-const CustomDropdown = ({ t }: Props) => {
+import { TranslationFn } from '../common/types'
+
+const CustomDropdown = ({ t }: { t: TranslationFn }) => {
   const [mounted, setMounted] = useState(false)
   const { theme, setTheme } = useTheme()
   const [openDarkTheme, setOpenDarkTheme] = useState(false)

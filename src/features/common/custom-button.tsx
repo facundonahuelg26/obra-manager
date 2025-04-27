@@ -23,7 +23,7 @@ const CustomButton = extendVariants(Button, {
   defaultVariants: {
     // <- modify/add default variants
     color: 'solidBlue',
-    size: 'xl',
+    size: 'md',
     isDisabled: false,
   },
   compoundVariants: [
