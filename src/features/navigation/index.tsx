@@ -9,21 +9,22 @@ import {
   NavbarMenuItem,
 } from '@heroui/navbar'
 import { Link } from '@heroui/link'
-import { ROUTES } from '@/utils'
+// import { ROUTES } from '@/utils'
 import { useState } from 'react'
 import { usePathname } from 'next/navigation'
 import CustomDropdown from './custom-dropdown'
 import { useTranslations } from 'next-intl'
 import CustomDrawer from './custom-drawer'
+import { menuData } from './menu-data'
+import RenderIcon from '../common/render-icon'
+import MediumDrawer from './medium-drawer'
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const t = useTranslations('Navigation')
-  const menuItems = [
-    { title: t('linkDashboard'), link: ROUTES.DASHBOARD },
-    { title: t('linkConfigureProfile'), link: ROUTES.CONFIGURE_PROFILE },
-  ]
+
+  const menuItems = menuData(t)
   const pathname = usePathname()
 
   return (
@@ -53,39 +54,43 @@ const Navigation = () => {
         <NavbarContent className='sm:hidden' justify='start'>
           <NavbarMenuToggle
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            icon={
+              <RenderIcon
+                dataIcon={isMenuOpen ? 'ic:baseline-close' : 'ic:baseline-menu'}
+              />
+            }
           />
+        </NavbarContent>
+        <NavbarContent className='hidden sm:block lg:hidden' justify='start'>
+          <MediumDrawer t={t} />
         </NavbarContent>
         <NavbarBrand>
           <p className='font-bold text-inherit'>{t('appName')}</p>
         </NavbarBrand>
-
-        {/* <NavbarContent className='hidden sm:flex gap-4' justify='center'>
-          <NavbarItem isActive={pathname === ROUTES.DASHBOARD}>
-            <Link color='foreground' href={ROUTES.DASHBOARD}>
-              {t('linkDashboard')}
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive={pathname === ROUTES.CONFIGURE_PROFILE}>
-            <Link
-              aria-current='page'
-              color='foreground'
-              href={ROUTES.CONFIGURE_PROFILE}
-            >
-              {t('linkConfigureProfile')}
-            </Link>
-          </NavbarItem>
-        </NavbarContent> */}
         <NavbarMenu>
           {menuItems.map((item, index) => (
             <NavbarMenuItem
               key={`${item}-${index}`}
               isActive={pathname === item.link}
+              className={
+                pathname === item.link
+                  ? 'py-2 pl-2 bg-primary/25 data-[hover=true]:bg-primary/50 data-[hover=true]:text-primary'
+                  : 'pl-2 text-default'
+              }
             >
               <Link
-                className={`w-full ${pathname === item.link && 'text-primary'}`}
+                className={`w-full flex items-center gap-2 ${
+                  pathname === item.link && 'text-primary'
+                } tracking-wider text-sm`}
                 color='foreground'
                 href={item.link}
                 size='lg'
+                showAnchorIcon
+                anchorIcon={
+                  <div className='order-first flex-shrink-0'>
+                    <RenderIcon dataIcon={item.icon} />
+                  </div>
+                }
               >
                 {item.title}
               </Link>

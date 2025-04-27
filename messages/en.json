@@ -1,29 +1,30 @@
 {
   "WelcomePage": {
-    "title": "Welcome to Salary Radar",
+    "title": "Welcome to Obra Manager",
     "text": "To get started, you need to",
     "linkToLogin": "log in",
-    "firstContent": "At Salary Radar, we provide you with up-to-date and reliable data on industry salaries so you can make better career decisions.",
+    "firstContent": "At Obra Manager, we provide you with up-to-date and reliable data on industry salaries so you can make better career decisions.",
     "secondContent": "Salary transparency is key to better career planning. Join us and discover how the market is moving in your industry.",
     "buttonLogin": "Log in"
   },
   "Login": {
-    "title": "Log in to Salary Radar",
+    "title": "Log in to Obra Manager",
     "text": "I want to",
     "linkToWelcome": "go back to the beginning",
     "github": "Continue with GitHub",
     "linkedin": "Continue with LinkedIn"
   },
-  "Dashboard": {
-    "title": "Know your market value with Salary Radar",
+  "Projects": {
+    "title": "Know your market value with Obra Manager",
     "subtitle": "Discover key insights about salaries in your industry to make more informed decisions. Compare salaries based on your position, experience, and other personalized filters to better understand your standing in the job market.",
-    "moreInfo": "Our registration process is quick and simple. We only need a few details to provide you with the best experience.",
-    "linkConfigureProfile": "Configure professional profile"
+    "moreInfo": "Our registration process is quick and simple. We only need a few details to provide you with the best experience."
   },
   "Navigation": {
-    "appName": "SALARY RADAR",
-    "linkDashboard": "Dashboard",
-    "linkConfigureProfile": "Configure profile",
+    "appName": "OBRA MANAGER",
+    "linkProjects": "Projects",
+    "linkCreateProject": "Create project",
+    "linkCalculateMaterials": "Calculate materials",
+    "linkAnalytics": "Project analytics",
     "userDescription": "User",
     "customizeDescription": "Customize",
     "appearance": "Appearance",
