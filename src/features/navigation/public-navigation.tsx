@@ -74,7 +74,7 @@ const PublicNavigation = () => {
         {menuItems.map((item, index) => (
           <NavbarItem key={`${item}-${index}`} className={'pl-2 text-default'}>
             <Link
-              className={`w-full flex items-center gap-2  tracking-wider text-sm`}
+              className={`w-full flex items-center gap-2  tracking-wider text-sm font-semibold`}
               color='foreground'
               href={item.link}
               size='lg'
