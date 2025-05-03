@@ -9,8 +9,6 @@
   },
   "Login": {
     "title": "Iniciar sesión en Obra Manager",
-    "text": "Quiero",
-    "linkToWelcome": "volver al inicio",
     "github": "Continue with GitHub",
     "linkedin": "Continue with LinkedIn"
   },

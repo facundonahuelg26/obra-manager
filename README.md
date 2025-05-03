@@ -1,6 +1,6 @@
-# 🚀 Salary Radar
+# 🚀 Obra manager
 
-Salary Radar es una aplicación desarrollada con **Next.js** que permite visualizar y analizar datos salariales de manera interactiva.
+Obra manager es una aplicación desarrollada con **Next.js** que permite visualizar y analizar datos de obras de construcción de manera interactiva.
 
 ## 🛠 Tecnologías
 
@@ -14,8 +14,8 @@ Salary Radar es una aplicación desarrollada con **Next.js** que permite visuali
 Cloná el repositorio e instalá las dependencias:
 
 ```bash
-git clone https://github.com/facundonahuelg26/salary-radar.git
-cd salary-radar
+git clone https://github.com/facundonahuelg26/obra-manager.git
+cd obra-manager
 npm install
 ```
 
@@ -33,7 +33,7 @@ Para que la aplicación funcione correctamente, creá un archivo .env en la raí
 
 ## 📂 Estructura del Proyecto
 
-📦 salary-radar  
+📦 obra-manager  
  ┣ 📂 app # Rutas y páginas principales  
  ┣ 📂 components # Componentes reutilizables  
  ┣ 📂 styles # Estilos globales y Tailwind  
@@ -45,6 +45,6 @@ Para que la aplicación funcione correctamente, creá un archivo .env en la raí
 ## 📌Funcionalidades del proyecto
 
 - **Autenticación con Auth.js y perfil de usuario**
-- **Integración con API de sueldos**
+- **Integración con API de proyectos**
 - **Una vista con estadisticas generales**
 - **Soporte para filtros avanzados**
