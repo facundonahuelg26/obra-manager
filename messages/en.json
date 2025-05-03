@@ -9,8 +9,6 @@
   },
   "Login": {
     "title": "Log in to Obra Manager",
-    "text": "I want to",
-    "linkToWelcome": "go back to the beginning",
     "github": "Continue with GitHub",
     "linkedin": "Continue with LinkedIn"
   },
