@@ -35,11 +35,6 @@ export const publicMenuData = (t: TranslationFn): MenuItem[] => {
   console.log(t('linkProjects'))
   return [
     {
-      title: 'Guia de la aplicación',
-      link: '#',
-      icon: '',
-    },
-    {
       title: 'Acerca de',
       link: '#',
       icon: '',

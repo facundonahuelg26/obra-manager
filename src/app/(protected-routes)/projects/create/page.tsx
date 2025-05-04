@@ -1,7 +1,8 @@
+import { CreateProjectForm } from '@/features'
 import React from 'react'
 
-const CreateProject = () => {
-  return <div>CreateProject</div>
+const CreateProjectPage = () => {
+  return <CreateProjectForm />
 }
 
-export default CreateProject
+export default CreateProjectPage
