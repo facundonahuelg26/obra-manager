@@ -1,6 +1,8 @@
 import React from 'react'
 import CustomButton from '../common/custom-button'
 import RenderIcon from '../common/render-icon'
+import { ROUTES } from '@/utils'
+import { Link } from '@heroui/link'
 
 const ProjectHeader = () => {
   return (
@@ -11,6 +13,8 @@ const ProjectHeader = () => {
           className='flex text-base font-semibold'
           color='solidBlue'
           startContent={<RenderIcon dataIcon='basil:plus-solid' />}
+          as={Link}
+          href={ROUTES.PROJECTS.CREATE_PROJECT}
         >
           Crear nuevo proyecto
         </CustomButton>

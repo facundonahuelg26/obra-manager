@@ -14,6 +14,7 @@ import { useTranslations } from 'next-intl'
 import RenderIcon from '../common/render-icon'
 import { publicMenuData } from './menu-data'
 import { useState } from 'react'
+import ApplicationGuide from './application-guide'
 
 const PublicNavigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -71,6 +72,9 @@ const PublicNavigation = () => {
         ))}
       </NavbarMenu>
       <NavbarContent className='hidden sm:flex gap-4' justify='end'>
+        <NavbarItem className={'pl-2 text-default'}>
+          <ApplicationGuide />
+        </NavbarItem>
         {menuItems.map((item, index) => (
           <NavbarItem key={`${item}-${index}`} className={'pl-2 text-default'}>
             <Link
