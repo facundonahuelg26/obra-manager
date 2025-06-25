@@ -5,14 +5,17 @@ import type { NextRequest } from 'next/server'
 export default async function middleware(req: NextRequest) {
   const session = await auth() // Obtiene la sesión del usuario
   const { pathname } = req.nextUrl
+  const protectedPaths = [
+    '/projects',
+    '/calculate-materials',
+    '/project-analytics',
+    '/profile',
+  ]
 
-  if (
-    !session &&
-    (pathname === '/projects' ||
-      pathname === '/calculate-materials' ||
-      pathname === '/project-analytics' ||
-      pathname === '/profile')
-  ) {
+  const isProtectedPath = protectedPaths.some((path) =>
+    pathname.startsWith(path),
+  )
+  if (!session && isProtectedPath) {
     return NextResponse.redirect(new URL('/', req.url))
   }
 

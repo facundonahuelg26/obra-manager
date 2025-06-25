@@ -1,14 +1,5 @@
 'use client'
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from '@heroui/modal'
-import { Button } from '@heroui/button'
-import { useDisclosure } from '@heroui/react'
-import { useState } from 'react'
+import ModalInfo from '../common/modal-info'
 
 const steps = [
   {
@@ -34,76 +25,28 @@ const steps = [
 ]
 
 const ApplicationGuide = () => {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure()
-  const [stepIndex, setStepIndex] = useState(0)
-
-  const handleNext = () => {
-    if (stepIndex < steps.length - 1) {
-      setStepIndex((prev) => prev + 1)
-    }
-  }
-
-  const handleBack = () => {
-    if (stepIndex > 0) {
-      setStepIndex((prev) => prev - 1)
-    }
-  }
-
-  const handleClose = () => {
-    setStepIndex(0)
-    onOpenChange()
-  }
-
-  const currentStep = steps[stepIndex]
-
   return (
-    <>
-      <Button
-        className='w-full flex items-center gap-2 tracking-wider text-sm font-semibold'
-        variant='light'
-        size='lg'
-        onPress={onOpen}
-      >
-        Guía de la Aplicación
-      </Button>
-
-      <Modal
-        isOpen={isOpen}
-        onOpenChange={handleClose}
-        isDismissable
-        backdrop='blur'
-      >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader>{currentStep.title}</ModalHeader>
-              <ModalBody>
-                <p>{currentStep.content}</p>
-              </ModalBody>
-              <ModalFooter className='flex justify-between'>
-                <Button
-                  variant='light'
-                  onPress={handleBack}
-                  isDisabled={stepIndex === 0}
-                >
-                  Anterior
-                </Button>
-                <Button
-                  color='primary'
-                  onPress={
-                    stepIndex === steps.length - 1 ? onClose : handleNext
-                  }
-                  isDisabled={stepIndex === steps.length - 1 && false}
-                >
-                  {stepIndex === steps.length - 1 ? 'Finalizar' : 'Siguiente'}
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
-    </>
+    <ModalInfo
+      type='steps'
+      titleOpenButton='Guía de Aplicación'
+      steps={steps}
+      colorButton='primary'
+    />
   )
 }
 
 export default ApplicationGuide
+
+/*
+  const contenidoUnico = {
+    title: 'Título único',
+    content: 'Este es el contenido del modal simple.',
+  }
+
+  <ModalInfo
+      type='single'
+      titleOpenButton='Abrir Modal Simple'
+      content={contenidoUnico}
+      colorButton='danger'
+    />
+*/

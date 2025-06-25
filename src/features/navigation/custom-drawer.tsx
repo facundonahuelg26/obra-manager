@@ -8,8 +8,8 @@ export default function CustomDrawer() {
   const items = menuData(t)
   const pathname = usePathname()
   return (
-    <aside className='bg-background border-r-1 border-default hidden lg:flex w-64 fixed top-16 left-0 h-[calc(100vh-64px)] p-6'>
-      <nav className='w-full flex flex-col gap-4'>
+    <aside className='bg-background hidden lg:flex w-64 fixed top-16 left-0 h-[calc(100vh-64px)]'>
+      <nav className='w-full flex flex-col'>
         <NavList items={items} pathname={pathname} />
       </nav>
     </aside>

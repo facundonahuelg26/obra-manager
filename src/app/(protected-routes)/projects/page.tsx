@@ -20,7 +20,7 @@ const Projects = async ({
   // const t = await getTranslations('Dashboard')
 
   return (
-    <div className='flex flex-col items-center   p-5 sm:p-0 sm:pt-4'>
+    <div className='flex flex-col items-center   p-5 sm:p-0'>
       <div className='text-center flex justify-center'>
         <Suspense fallback={<LoadingProjects />}>
           <ProjectCards />

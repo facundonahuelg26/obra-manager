@@ -8,7 +8,11 @@ module.exports = {
     './node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      // fontWeight: {
+      //   normal: 400,
+      // },
+    },
   },
   darkMode: 'class',
   plugins: [
@@ -19,7 +23,8 @@ module.exports = {
             background: '#F4F4F5',
             foreground: '#111827',
             primary: {
-              DEFAULT: '#357de8',
+              //  DEFAULT: '#357de8',
+              DEFAULT: '#4a5df9',
               foreground: '#111827',
             },
             secondary: {
@@ -43,21 +48,24 @@ module.exports = {
           },
           layout: {
             radius: {
-              small: '4px',
-              medium: '4px',
-              large: '4px',
-              full: '4px',
+              small: '8px',
+              medium: '8px',
+              large: '8px',
+              full: '8px',
             },
           },
         },
         dark: {
           colors: {
             background: '#1f1f21',
-            foreground: '#E5E7EB',
+            // foreground: '#E5E7EB',
+            foreground: '#d4d1ea',
             content1: '#242528',
             primary: {
-              DEFAULT: '#669df1',
-              foreground: '#292a2e',
+              // DEFAULT: '#669df1',
+              DEFAULT: '#4a5df9',
+              // foreground: '#292a2e',
+              foreground: '#ffffff',
             },
             secondary: {
               DEFAULT: '#cc95e9',
@@ -80,12 +88,22 @@ module.exports = {
             },
           },
           layout: {
-            radius: {
-              small: '4px',
-              medium: '4px',
-              large: '4px',
-              full: '4px',
+            fontSize: {
+              small: '16px',
+              // medium: '16px',
+              // large: '16px',
             },
+            // fontWeight: {
+            //   small: '700',
+            //   medium: '700',
+            //   large: '700',
+            // },
+            // radius: {
+            //   small: '8px',
+            //   medium: '8px',
+            //   large: '8px',
+            //   full: '8px',
+            // },
           },
         },
       },

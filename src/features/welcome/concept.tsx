@@ -1,16 +1,20 @@
 import React from 'react'
+import { Typography } from '../common/typography'
+import { MainHeader } from '../common/main-header'
 
 const Concept = () => {
   return (
-    <div className='w-full flex flex-col items-center text-center sm:text-left py-8 sm:py-16'>
-      <h1 className='text-4xl font-bold'>
-        Optimiza la gestión de tus proyectos de construcción
-      </h1>{' '}
-      <h2 className='pt-8'>
+    <div className='w-full flex flex-col'>
+      <MainHeader>
+        <Typography variant='h1' className='text-center sm:text-left'>
+          Optimiza la gestión de tus proyectos de construcción
+        </Typography>
+      </MainHeader>
+      <Typography className='text-center sm:text-left'>
         Obra Manager es una plataforma integral diseñada para arquitectos,
         ingenieros y profesionales de la construcción que buscan mejorar el
         control y la eficiencia en la gestión de sus obras.
-      </h2>
+      </Typography>
     </div>
   )
 }

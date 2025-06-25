@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Open_Sans } from 'next/font/google'
 import './globals.css'
 import { getLocale } from 'next-intl/server'
 import { Providers } from './providers'
 import { NextIntlClientProvider } from 'next-intl'
-const inter = Inter({
+const inter = Open_Sans({
   variable: '--font-inter',
-  // weight: ['400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600', '700', '800'],
   subsets: ['latin'],
 })
 

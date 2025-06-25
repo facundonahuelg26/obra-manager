@@ -1,28 +1,37 @@
-import { RenderIcon } from '@/features'
-import { Button } from '@heroui/button'
+import { CustomButton, RenderIcon } from '@/features'
 import { signIn } from '@/auth'
 import { getTranslations } from 'next-intl/server'
+import { Typography } from '../common/typography'
+import { MainHeader } from '../common/main-header'
+import { ICONS } from '@/utils'
 const Login = async () => {
   const t = await getTranslations('Login')
   return (
-    <div className='w-full flex flex-col items-center sm:items-end py-8 sm:py-16'>
+    <div className='w-full flex flex-col items-center sm:items-end '>
       <div className='w-full lg:max-w-sm'>
-        <h1 className='text-2xl text-center font-bold mb-6'>{t('title')}</h1>
+        <MainHeader>
+          <Typography variant='h1' as='h2' className='text-center sm:text-left'>
+            {t('title')}
+          </Typography>
+        </MainHeader>
         <form
           action={async () => {
             'use server'
             await signIn('github')
           }}
         >
-          <Button
-            className='w-full h-12 mt-4 mb-4 text-base font-semibold'
+          <CustomButton
+            className='my-2'
+            size='lg'
+            fullWidth
+            // className='w-full h-12 mt-4 mb-4 text-base font-semibold'
             color='default'
             variant='solid'
-            startContent={<RenderIcon dataIcon='uil:github' />}
+            startContent={<RenderIcon dataIcon={ICONS.LOGIN.GITHUB} />}
             type='submit'
           >
             {t('github')}
-          </Button>
+          </CustomButton>
         </form>
         <form
           action={async () => {
@@ -30,15 +39,18 @@ const Login = async () => {
             await signIn('linkedin')
           }}
         >
-          <Button
-            className='w-full h-12 text-base font-semibold'
+          <CustomButton
+            className='my-2'
+            size='lg'
+            fullWidth
+            // className='w-full h-12 text-base font-semibold'
             color='secondary'
             variant='solid'
-            startContent={<RenderIcon dataIcon='uil:linkedin' />}
+            startContent={<RenderIcon dataIcon={ICONS.LOGIN.LINKEDIN} />}
             type='submit'
           >
             {t('linkedin')}
-          </Button>
+          </CustomButton>
         </form>
       </div>
     </div>

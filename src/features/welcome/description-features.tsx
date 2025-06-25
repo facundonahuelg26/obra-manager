@@ -51,7 +51,7 @@ const DescriptionFeatures = () => {
     <>
       {features.map((feature) => (
         <Grid item xs={12} sm={2} key={feature.id}>
-          <Card className='py-4'>
+          <Card className='mt-8'>
             <CardHeader className='pb-0 pt-2 px-4 flex-col items-start'>
               <p className='text-tiny uppercase font-bold'>{feature.title}</p>
               <h4 className='font-bold text-large'>{feature.subtitle}</h4>
@@ -59,7 +59,7 @@ const DescriptionFeatures = () => {
             <CardBody className='overflow-visible py-2'>
               <Image
                 alt='Card background'
-                className='object-cover rounded-xl'
+                className='object-cover'
                 src={feature.image}
                 width={270}
               />

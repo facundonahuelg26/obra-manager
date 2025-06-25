@@ -1,4 +1,4 @@
-import { ROUTES } from '@/utils'
+import { ICONS, ROUTES } from '@/utils'
 import { TranslationFn } from '../common/types'
 export type MenuItem = {
   title: string
@@ -11,22 +11,22 @@ export const menuData = (t: TranslationFn): MenuItem[] => {
     {
       title: t('linkProjects'),
       link: ROUTES.PROJECTS.MAIN,
-      icon: 'uil:rocket',
+      icon: ICONS.NAV.PROJECTS,
     },
     {
       title: t('linkCreateProject'),
       link: ROUTES.PROJECTS.CREATE_PROJECT,
-      icon: 'basil:plus-solid',
+      icon: ICONS.NAV.CREATE_PROJECT,
     },
     {
       title: t('linkCalculateMaterials'),
       link: ROUTES.CALCULATE_MATERIALS,
-      icon: 'material-symbols:calculate-outline-rounded',
+      icon: ICONS.NAV.CALCULATE_MATERIALS,
     },
     {
       title: t('linkAnalytics'),
       link: ROUTES.PROJECT_ANALYTICS,
-      icon: 'uil:analytics',
+      icon: ICONS.NAV.ANALYTICS,
     },
   ]
 }
