@@ -31,7 +31,7 @@ const Navigation = () => {
     <>
       <Navbar
         maxWidth='full'
-        isBordered
+        // isBordered
         isMenuOpen={isMenuOpen}
         onMenuOpenChange={setIsMenuOpen}
         classNames={{

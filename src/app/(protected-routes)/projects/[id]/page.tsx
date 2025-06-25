@@ -1,7 +1,8 @@
+import { ContainerProjectDetail } from '@/features'
 import React from 'react'
 
 const ProjectDetails = () => {
-  return <div>ProjectDetails</div>
+  return <ContainerProjectDetail />
 }
 
 export default ProjectDetails

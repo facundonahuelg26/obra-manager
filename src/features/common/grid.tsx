@@ -8,6 +8,7 @@ interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
   md?: number
   lg?: number
   xl?: number
+  xxl?: number
   gap?: number
   children: React.ReactNode
 }
@@ -20,6 +21,7 @@ const Grid: React.FC<GridProps> = ({
   md,
   lg,
   xl,
+  xxl,
   gap,
   children,
   ...rest
@@ -102,6 +104,19 @@ const Grid: React.FC<GridProps> = ({
           ${xl === 10 ? 'xl:col-span-10' : ''}
           ${xl === 11 ? 'xl:col-span-11' : ''}
           ${xl === 12 ? 'xl:col-span-12' : ''}
+
+          ${xxl === 1 ? '2xl:col-span-1' : ''}
+          ${xxl === 2 ? '2xl:col-span-2' : ''}
+          ${xxl === 3 ? '2xl:col-span-3' : ''}
+          ${xxl === 4 ? '2xl:col-span-4' : ''}
+          ${xxl === 5 ? '2xl:col-span-5' : ''}
+          ${xxl === 6 ? '2xl:col-span-6' : ''}
+          ${xxl === 7 ? '2xl:col-span-7' : ''}
+          ${xxl === 8 ? '2xl:col-span-8' : ''}
+          ${xxl === 9 ? '2xl:col-span-9' : ''}
+          ${xxl === 10 ? '2xl:col-span-10' : ''}
+          ${xxl === 11 ? '2xl:col-span-11' : ''}
+          ${xxl === 12 ? '2xl:col-span-12' : ''}
         `}
       >
         {children}

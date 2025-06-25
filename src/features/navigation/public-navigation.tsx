@@ -24,7 +24,7 @@ const PublicNavigation = () => {
   return (
     <Navbar
       maxWidth='full'
-      isBordered
+      // isBordered
       isMenuOpen={isMenuOpen}
       onMenuOpenChange={setIsMenuOpen}
     >

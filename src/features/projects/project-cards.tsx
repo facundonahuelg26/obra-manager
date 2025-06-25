@@ -38,7 +38,7 @@ const projects: Project[] = [
     id: 1,
     // name: 'Edificio Central Park aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
     name: 'Edificio Central Park',
-    status: 'En construcción',
+    status: 'EN CONSTRUCCIÓN',
     color: 'primary',
     // color: `relative before:absolute before:left-0 before:top-0 before:h-full before:w-[20px] before:bg-primary/75 before:opacity-25 before:content-[''] pl-5`,
     startDate: '2024-02-15',
@@ -47,7 +47,7 @@ const projects: Project[] = [
   {
     id: 2,
     name: 'Casa Familiar López',
-    status: 'Finalizado',
+    status: 'FINALIZADO',
     color: 'success',
     // color: `relative before:absolute before:left-0 before:top-0 before:h-full before:w-[20px] before:bg-success/75 before:opacity-25 before:content-[''] pl-5`,
     startDate: '2023-05-10',
@@ -56,7 +56,7 @@ const projects: Project[] = [
   {
     id: 3,
     name: 'Complejo Torres del Sol',
-    status: 'En planificación',
+    status: 'EN PLANIFICACIÓN',
     color: 'secondary',
     // color: `relative before:absolute before:left-0 before:top-0 before:h-full before:w-[20px] before:bg-secondary/75 before:opacity-25 before:content-[''] pl-5`,
     startDate: '2024-08-01',
@@ -65,7 +65,7 @@ const projects: Project[] = [
   {
     id: 4,
     name: 'Oficinas GreenTech',
-    status: 'Cancelado',
+    status: 'CANCELADO',
     color: 'danger',
     // color: `relative before:absolute before:left-0 before:top-0 before:h-full before:w-[20px] before:bg-danger/75 before:opacity-25 before:content-[''] pl-5`,
     startDate: '2024-01-20',
@@ -74,7 +74,7 @@ const projects: Project[] = [
   {
     id: 5,
     name: 'Edificio Central Park',
-    status: 'En construcción',
+    status: 'EN CONSTRUCCIÓN',
     color: 'primary',
     // color: `relative before:absolute before:left-0 before:top-0 before:h-full before:w-[20px] before:bg-primary/75 before:opacity-25 before:content-[''] pl-5`,
     startDate: '2024-02-15',
@@ -83,7 +83,7 @@ const projects: Project[] = [
   {
     id: 6,
     name: 'Casa Familiar López',
-    status: 'Finalizado',
+    status: 'FINALIZADO',
     color: 'success',
     // color: `relative before:absolute before:left-0 before:top-0 before:h-full before:w-[20px] before:bg-success/75 before:opacity-25 before:content-[''] pl-5`,
     startDate: '2023-05-10',
@@ -91,7 +91,7 @@ const projects: Project[] = [
   },
 ]
 const customClass = projects.map((project) => {
-  return `w-full mt-8 relative before:absolute before:left-0 before:top-0 before:h-full before:w-[20px] before:bg-${project.color}/75 before:opacity-25 before:content-[''] pl-5`
+  return `w-full relative before:absolute before:left-0 before:top-0 before:h-full before:w-[20px] before:bg-${project.color}/75 before:opacity-25 before:content-[''] pl-5`
 })
 
 const simularPeticionConRespuesta = (ms: number): Promise<string> => {
@@ -110,11 +110,11 @@ const ProjectCards = async () => {
     <LayoutContainer>
       {/* // <div className='w-lvw lg:w-[700px] xl:w-[1260px]'> */}
       <ProjectHeader />
-      <Divider />
+      {/* <Divider className='mt-4' /> */}
       {numberOfProjects ? (
         <Card
           // className={project.color}
-          className='w-full mt-8'
+          className='w-full'
         >
           <CardHeader>
             <p className='text-left'>
@@ -153,8 +153,8 @@ const ProjectCards = async () => {
                     width={40}
                   />
                   <div className='flex flex-col'>
-                    <p className='text-md'>{project.name}</p>
-                    <p className='text-small text-default-500'>heroui.com</p>
+                    <p>{project.name}</p>
+                    <p>heroui.com</p>
                   </div>
                 </CardHeader>
                 <Divider />
@@ -163,23 +163,21 @@ const ProjectCards = async () => {
                     // className='uppercase font-extrabold'
                     color={project.color as ChipProps['color']}
                     size='sm'
-                    radius='md'
+                    // radius='md'
                     variant='flat'
                   >
-                    <span className='uppercase font-semibold'>
-                      {project.status}
-                    </span>
+                    {project.status}
                   </Chip>
                 </CardBody>
                 <Divider />
                 <CardFooter>
                   <Button
                     as={Link}
-                    color='primary'
+                    color='default'
                     href='https://github.com/heroui-inc/heroui'
-                    variant='light'
+                    variant='ghost'
                   >
-                    Ver proyecto
+                    Más información
                   </Button>
                   {/* <Link href='https://github.com/heroui-inc/heroui'>
                     Ver proyecto

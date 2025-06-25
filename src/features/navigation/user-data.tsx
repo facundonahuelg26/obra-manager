@@ -11,8 +11,9 @@ const UserData = () => {
         avatarProps={{
           src: session?.user?.image || '',
         }}
-        description={session?.user?.email}
         name={session?.user?.name}
+        description={session?.user?.email}
+        className='text-foreground font-medium'
       />
     </Link>
   )

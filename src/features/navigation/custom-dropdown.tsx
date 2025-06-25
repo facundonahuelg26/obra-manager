@@ -15,6 +15,7 @@ import { signOut } from 'next-auth/react'
 import UserData from './user-data'
 import AvatarData from './avatar-data'
 import { TranslationFn } from '../common/types'
+import { ICONS } from '@/utils'
 
 const CustomDropdown = ({ t }: { t: TranslationFn }) => {
   const [mounted, setMounted] = useState(false)
@@ -54,7 +55,7 @@ const CustomDropdown = ({ t }: { t: TranslationFn }) => {
             className='cursor-default w-full !px-0'
             closeOnSelect={false}
             textValue={t('selectTheme')}
-            startContent={<RenderIcon dataIcon='formkit:arrowleft' />}
+            startContent={<RenderIcon dataIcon={ICONS.ARROW_LEFT} />}
             onPress={() => setOpenDarkTheme(false)}
           >
             {t('selectTheme')}
@@ -66,7 +67,7 @@ const CustomDropdown = ({ t }: { t: TranslationFn }) => {
             textValue={t('dark')}
             startContent={
               <RenderIcon
-                dataIcon='material-symbols:check'
+                dataIcon={ICONS.CHECK}
                 className={`${theme === 'dark' ? '' : 'opacity-0'}`}
               />
             }
@@ -84,7 +85,7 @@ const CustomDropdown = ({ t }: { t: TranslationFn }) => {
             textValue={t('light')}
             startContent={
               <RenderIcon
-                dataIcon='material-symbols:check'
+                dataIcon={ICONS.CHECK}
                 className={`${theme === 'light' ? '' : 'opacity-0'}`}
               />
             }
@@ -103,7 +104,7 @@ const CustomDropdown = ({ t }: { t: TranslationFn }) => {
             className='cursor-default w-full !px-0'
             closeOnSelect={false}
             textValue={t('selectLanguage')}
-            startContent={<RenderIcon dataIcon='formkit:arrowleft' />}
+            startContent={<RenderIcon dataIcon={ICONS.ARROW_LEFT} />}
             onPress={() => setOpenLanguage(false)}
           >
             {t('selectLanguage')}
@@ -113,7 +114,7 @@ const CustomDropdown = ({ t }: { t: TranslationFn }) => {
             textValue={t('en')}
             startContent={
               <RenderIcon
-                dataIcon='material-symbols:check'
+                dataIcon={ICONS.CHECK}
                 className={`${
                   Cookies.get('NEXT_LOCALE') === 'en' ? '' : 'opacity-0'
                 }`}
@@ -128,7 +129,7 @@ const CustomDropdown = ({ t }: { t: TranslationFn }) => {
             textValue={t('es')}
             startContent={
               <RenderIcon
-                dataIcon='material-symbols:check'
+                dataIcon={ICONS.CHECK}
                 className={`${
                   Cookies.get('NEXT_LOCALE') === 'es' ? '' : 'opacity-0'
                 }`}
@@ -155,7 +156,7 @@ const CustomDropdown = ({ t }: { t: TranslationFn }) => {
               key='theme'
               closeOnSelect={false}
               textValue={t('customizeDescription')}
-              startContent={<RenderIcon dataIcon='heroicons-solid:moon' />}
+              startContent={<RenderIcon dataIcon={ICONS.DROPDOWN.DARK} />}
               onPress={() => setOpenDarkTheme(true)}
             >
               {t('appearance')}
@@ -164,9 +165,7 @@ const CustomDropdown = ({ t }: { t: TranslationFn }) => {
               key='language'
               closeOnSelect={false}
               textValue={t('language')}
-              startContent={
-                <RenderIcon dataIcon='material-symbols:translate' />
-              }
+              startContent={<RenderIcon dataIcon={ICONS.DROPDOWN.LANGUAGE} />}
               onPress={() => setOpenLanguage(true)}
             >
               {t('language')}
@@ -176,9 +175,7 @@ const CustomDropdown = ({ t }: { t: TranslationFn }) => {
             key='logout'
             color='danger'
             textValue={t('logout')}
-            startContent={
-              <RenderIcon dataIcon='material-symbols:logout-rounded' />
-            }
+            startContent={<RenderIcon dataIcon={ICONS.DROPDOWN.LOGOUT} />}
             onPress={() => signOut()}
           >
             {t('logout')}

@@ -7,7 +7,6 @@ const AvatarData = () => {
   return (
     <DropdownTrigger>
       <Avatar
-        // isBordered
         as='button'
         className='transition-transform'
         name={session?.user?.name || ''}

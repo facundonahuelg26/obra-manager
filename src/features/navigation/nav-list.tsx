@@ -19,19 +19,16 @@ const NavList = ({
         <ListboxItem
           key={item.link}
           textValue={item.title}
-          className={
-            item.link === pathname
-              ? 'bg-primary/25 data-[hover=true]:bg-primary/50 data-[hover=true]:text-primary'
-              : ''
-          }
+          className={`py-2.5 ${item.link === pathname ? 'bg-default' : ''}`}
         >
           <Link
             href={item.link}
-            className={`${
-              item.link === pathname
-                ? 'font-semibold text-primary'
-                : 'text-foreground'
-            } flex items-center gap-2 tracking-wider text-sm`} // usamos flex normal
+            // className={`${
+            //   item.link === pathname
+            //     ? 'font-semibold text-primary'
+            //     : 'text-foreground'
+            // } flex items-center gap-2 tracking-wider text-sm`} // usamos flex normal
+            className={`text-foreground flex items-center gap-2 tracking-wider`}
             showAnchorIcon
             anchorIcon={
               <div className='order-first flex-shrink-0'>
