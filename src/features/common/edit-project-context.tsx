@@ -2,12 +2,15 @@
 
 import { createContext, useContext, FormEvent } from 'react'
 import { useEditInfo } from './use-edit-info'
-import { ProjectData } from './project-interface'
+import { CustomChangeEvent, ProjectData } from './project-interface'
 
 interface ProjectContextType {
   formDataProject: ProjectData
   // setAction: React.Dispatch<React.SetStateAction<ProjectData>>
-  handleChangeDataProject: (e: React.ChangeEvent<HTMLInputElement>) => void
+  errors?: Partial<Record<keyof ProjectData, string>>
+  handleChangeDataProject: (
+    e: React.ChangeEvent<HTMLInputElement> | CustomChangeEvent,
+  ) => void
   handleSubmit: (e: FormEvent<HTMLFormElement>) => void
   editedFields: Record<keyof ProjectData, boolean>
 }
@@ -31,6 +34,7 @@ export const ProjectProvider = ({
 }) => {
   const {
     formDataProject,
+    errors,
     handleChangeDataProject,
     editedFields,
     handleSubmit,
@@ -42,6 +46,7 @@ export const ProjectProvider = ({
     <ProjectContext.Provider
       value={{
         formDataProject,
+        errors,
         handleChangeDataProject,
         editedFields,
         handleSubmit,

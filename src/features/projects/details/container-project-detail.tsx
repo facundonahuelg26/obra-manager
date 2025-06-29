@@ -10,11 +10,17 @@ import { ProjectProvider } from '@/features/common/edit-project-context'
 const ContainerProjectDetail = () => {
   const projectData = {
     name: 'Casa CKAZ',
-    location: 'Ciudad de mexico',
+    location: 'Ciudad de México',
     status: { key: 'pending', label: 'Pendiente', color: 'warning' },
-    startDate: '01/01/2025',
-    endDate: '31/12/2025',
+    startDate: '01-01-2025',
+    endDate: '31-01-2025',
+    clientName: 'Juan Pérez',
+    clientEmail: 'juanperez@example.com',
+    architect: 'Alaniz López',
+    builder: 'Constructora XYZ',
+    notes: 'Tener en cuenta las condiciones climáticas',
   }
+
   return (
     <LayoutContainer>
       <div>

@@ -9,4 +9,15 @@ export interface ProjectData {
   status: Option
   startDate: string | null
   endDate: string | null
+  clientName: string
+  clientEmail: string
+  architect: string
+  builder: string
+  notes: string
+}
+export type CustomChangeEvent = {
+  target: {
+    name: string
+    value: string | Option // ✅ acá el tipo exacto, nada de `any`
+  }
 }

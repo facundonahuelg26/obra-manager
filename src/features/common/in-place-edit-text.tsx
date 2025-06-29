@@ -10,6 +10,7 @@ export interface InPlaceEditTextProps {
   title?: string
   value: string | null
   inputName: keyof ProjectData
+  errors?: string
   handleChangeDataProject: (e: React.ChangeEvent<HTMLInputElement>) => void
   editedFields?: Record<keyof ProjectData, boolean>
 }
@@ -18,6 +19,7 @@ const InPlaceEditText = ({
   title,
   value,
   inputName,
+  errors,
   handleChangeDataProject,
   editedFields,
 }: InPlaceEditTextProps) => {
@@ -41,7 +43,8 @@ const InPlaceEditText = ({
           name={inputName}
           value={value || ''}
           onChange={handleChangeDataProject}
-          errorMessage='Este campo es requerido'
+          isInvalid={!!errors}
+          errorMessage={errors}
           type='text'
           autoFocus
           onFocus={() => setIsFocused(true)}

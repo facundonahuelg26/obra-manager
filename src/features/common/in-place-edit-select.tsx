@@ -1,5 +1,6 @@
-import { Form } from '@heroui/react'
+import { useEffect, useState } from 'react'
 import { Button } from '@heroui/button'
+import { Chip } from '@heroui/chip'
 import {
   Dropdown,
   DropdownItem,
@@ -7,8 +8,9 @@ import {
   DropdownTrigger,
   DropdownSection,
 } from '@heroui/dropdown'
-import { Chip } from '@heroui/chip'
-import { FormEvent, useRef, useState } from 'react'
+import RenderIcon from './render-icon'
+import { ICONS } from '@/utils'
+import { CustomChangeEvent } from './project-interface'
 
 export interface Option {
   key: string
@@ -21,8 +23,12 @@ export interface InPlaceEditSelectProps {
   inputName: string
   option: Option
   options: Option[]
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void
+  editedFields?: Record<string, boolean>
+  handleChangeDataProject: (
+    e: React.ChangeEvent<HTMLInputElement> | CustomChangeEvent,
+  ) => void
 }
+
 type ChipColor =
   | 'default'
   | 'primary'
@@ -31,56 +37,57 @@ type ChipColor =
   | 'warning'
   | 'danger'
 
-const DropdownSelectForm = ({
+const InPlaceEditSelect = ({
+  title,
   inputName,
   option,
   options,
-  title,
-  handleSubmit,
+  editedFields,
+  handleChangeDataProject,
 }: InPlaceEditSelectProps) => {
-  const [selected, setSelected] = useState<Option | null>(
-    options.find((opt) => opt.key === option.key) || null,
-  )
-
-  const formRef = useRef<HTMLFormElement>(null)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const selected = option
+  // console.log(option, 'OPTION')
+  useEffect(() => {
+    if (!editedFields?.[inputName]) {
+      setDropdownOpen(false)
+    }
+  }, [editedFields, inputName])
 
   const handleSelect = (key: string) => {
     const selectedOption = options.find((opt) => opt.key === key)
     if (!selectedOption) return
 
-    setSelected(selectedOption)
+    const fakeEvent = {
+      target: {
+        name: inputName,
+        value: selectedOption,
+      },
+    }
 
-    // Actualiza el input hidden y dispara el submit
-    const input = formRef.current?.elements.namedItem(
-      inputName,
-    ) as HTMLInputElement
-    if (input) input.value = selectedOption.key
-
-    formRef.current?.requestSubmit()
+    handleChangeDataProject(fakeEvent)
+    setDropdownOpen(false)
   }
 
   return (
-    <Form ref={formRef} onSubmit={handleSubmit}>
+    <div className='flex items-center justify-between'>
       <div className='flex items-center gap-2'>
-        <input type='hidden' name={inputName} value={selected?.key ?? ''} />
-        {title}
-        <Dropdown>
+        {title}:
+        <Dropdown isOpen={dropdownOpen} onOpenChange={setDropdownOpen}>
           <DropdownTrigger>
-            <Button
-              variant='light'
-              className='p-0 data-[hover=true]:bg-transparent'
-            >
+            <Button className='bg-transparent'>
               <Chip
                 color={selected?.color as ChipColor}
                 variant='flat'
                 size='sm'
               >
                 <span className='uppercase font-semibold'>
-                  {selected?.label || 'Seleccionar'}
+                  {selected?.label}
                 </span>
               </Chip>
             </Button>
           </DropdownTrigger>
+
           <DropdownMenu
             aria-label='Estado'
             onAction={(key) => handleSelect(key as string)}
@@ -101,8 +108,17 @@ const DropdownSelectForm = ({
           </DropdownMenu>
         </Dropdown>
       </div>
-    </Form>
+
+      <Button
+        isIconOnly
+        color='default'
+        variant='light'
+        onPress={() => setDropdownOpen(true)} // 🔥 Abre el dropdown manualmente
+      >
+        <RenderIcon dataIcon={ICONS.EDIT} />
+      </Button>
+    </div>
   )
 }
 
-export default DropdownSelectForm
+export default InPlaceEditSelect

@@ -27,4 +27,5 @@ export const ICONS = {
   ARROW_LEFT: 'formkit:arrowleft',
   CHECK: 'material-symbols:check',
   CLOSE: 'material-symbols:close',
+  HAPPY: 'formkit:happy',
 }
