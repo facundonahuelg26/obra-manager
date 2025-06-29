@@ -1,28 +1,18 @@
-import { Grid } from '@/features'
-import React from 'react'
+import { RenderIcon } from '@/features'
+import { CardInfo } from '@/features'
+import { ICONS, ROUTES } from '@/utils'
 
 const ProjectAnalytics = () => {
   return (
-    <Grid container gap={4}>
-      <Grid item xs={12} md={2}>
-        <div className='bg-red-300 h-20'>Columna 1</div>
-      </Grid>
-      <Grid item xs={12} md={2}>
-        <div className='bg-green-300 h-20'>Columna 2</div>
-      </Grid>
-      <Grid item xs={12} md={2}>
-        <div className='bg-blue-300 h-20'>Columna 3</div>
-      </Grid>
-      <Grid item xs={12} md={2}>
-        <div className='bg-yellow-300 h-20'>Columna 3</div>
-      </Grid>
-      <Grid item xs={12} md={2}>
-        <div className='bg-sky-500 h-20'>Columna 3</div>
-      </Grid>
-      <Grid item xs={12} md={2}>
-        <div className='bg-indigo-500 h-20'>Columna 3</div>
-      </Grid>
-    </Grid>
+    <CardInfo
+      icon={
+        <RenderIcon dataIcon={ICONS.HAPPY} className='w-24 h-24 text-4xl' />
+      }
+      title='En construcción'
+      subtitle='Estamos construyendo esta sección. Estará disponible en breve. Este flujo forma parte de la siguiente etapa del desarrollo. Gracias por usar Obra Manager.'
+      buttonText='Volver a proyectos'
+      link={ROUTES.PROJECTS.MAIN}
+    />
   )
 }
 

@@ -1,6 +1,7 @@
 import { addToast } from '@heroui/toast'
 import { FormEvent, useMemo, useState } from 'react'
-import { ProjectData } from './project-interface'
+import { CustomChangeEvent, ProjectData } from './project-interface'
+import { validateField, ValidationErrors } from './validate-fields'
 
 const getEditedFields = (
   original: ProjectData,
@@ -18,12 +19,27 @@ export const useEditInfo = ({ projectData }: { projectData: ProjectData }) => {
 
   // ✅ Esto será el "original" para comparar, y podés actualizarlo en el submit
   const [originalData, setOriginalData] = useState(projectData)
+  const [errors, setErrors] = useState<ValidationErrors>({})
+  const handleChangeDataProject = (
+    e: React.ChangeEvent<HTMLInputElement> | CustomChangeEvent,
+  ) => {
+    const { name, value } = e.target
+    const trimmedValue = typeof value === 'string' ? value.trimStart() : ''
+    const error = validateField(
+      name as keyof ProjectData,
+      trimmedValue,
+      formDataProject,
+    )
 
-  const handleChangeDataProject = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormDataProject({
-      ...formDataProject,
-      [e.target.name]: e.target.value,
-    })
+    setFormDataProject((prev) => ({
+      ...prev,
+      [name]: trimmedValue,
+    }))
+
+    setErrors((prev) => ({
+      ...prev,
+      [name]: error || '',
+    }))
   }
 
   const editedFields = useMemo(() => {
@@ -33,14 +49,25 @@ export const useEditInfo = ({ projectData }: { projectData: ProjectData }) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    // 🔁 Actualizamos el original con lo nuevo
-    setOriginalData(formDataProject)
+    try {
+      // Simulamos un error
+      // throw new Error('Algo salió mal al guardar el campo.')
 
-    addToast({
-      title: 'Perfecto',
-      description: 'Campo editado exitosamente',
-      color: 'success',
-    })
+      // 🔁 Si todo fuera bien, se actualizaría el estado original
+      setOriginalData(formDataProject)
+      console.log(formDataProject)
+      addToast({
+        title: 'Perfecto',
+        description: 'Campo editado exitosamente',
+        color: 'success',
+      })
+    } catch (error) {
+      addToast({
+        title: 'Ha ocurrido un error',
+        description: (error as Error).message,
+        color: 'danger',
+      })
+    }
   }
 
   return {
@@ -48,5 +75,6 @@ export const useEditInfo = ({ projectData }: { projectData: ProjectData }) => {
     handleChangeDataProject,
     editedFields,
     handleSubmit,
+    errors,
   }
 }

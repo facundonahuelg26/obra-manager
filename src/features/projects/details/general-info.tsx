@@ -16,44 +16,27 @@ import { Typography } from '@/features/common/typography'
 import InPlaceEditText from '@/features/common/in-place-edit-text'
 import ContentInTabs from './content-in-tabs'
 import { useEditProjectContext } from '@/features/common/edit-project-context'
-import { ProjectData } from '@/features/common/project-interface'
+import { Option, ProjectData } from '@/features/common/project-interface'
+// import InPlanceEditSelect from '@/features/common/in-place-edit-select'
+import InPlaceEditSelect from '@/features/common/in-place-edit-select'
+import InPlaceEditDate from '@/features/common/in-place-edit-date'
 
-// const statusOptions: Option[] = [
-//   { key: 'pending', label: 'Pendiente', color: 'warning' },
-//   { key: 'approved', label: 'Aprobado', color: 'success' },
-//   { key: 'rejected', label: 'Rechazado', color: 'danger' },
-// ]
+const statusOptions: Option[] = [
+  { key: 'pending', label: 'Pendiente', color: 'warning' },
+  { key: 'approved', label: 'Aprobado', color: 'success' },
+  { key: 'rejected', label: 'Rechazado', color: 'danger' },
+]
 interface FieldConfig {
   title?: string
   value?: string | null
-  // chip?: boolean
-  // option?: Option
+  chip?: boolean
+  option?: Option
+  options?: Option[]
   inputName: keyof ProjectData
+  errors?: string
+  type?: string
 }
-// const ItemDataCard = ({
-//   title,
-//   value,
-//   chip,
-//   option,
-//   inputName,
-//   handleChangeDataProject,
-// }: {
-//   title?: string
-//   value?: string | null
-//   chip?: boolean
-//   option?: Option
-//   inputName: string
-//   handleChangeDataProject: (e: React.ChangeEvent<HTMLInputElement>) => void
-// }) => {
-//   return (
-//     <InPlaceEditText
-//       title={title}
-//       value={value || ''}
-//       inputName={inputName}
-//       handleChangeDataProject={handleChangeDataProject}
-//     />
-//   )
-// }
+
 export const ProjectDataCard = ({
   client,
   others,
@@ -61,58 +44,161 @@ export const ProjectDataCard = ({
   client?: boolean
   others?: boolean
 }) => {
-  // const { action, handleSubmit } = useEditInfo()
-  const { formDataProject, handleChangeDataProject, editedFields } =
+  const { formDataProject, errors, handleChangeDataProject, editedFields } =
     useEditProjectContext()
   const fields: FieldConfig[] = [
-    { title: 'Nombre', inputName: 'name', value: formDataProject.name },
+    {
+      title: 'Nombre',
+      inputName: 'name',
+      value: formDataProject.name,
+      errors: errors?.['name'],
+    },
     {
       title: 'Ubicación',
       inputName: 'location',
       value: formDataProject.location,
+      errors: errors?.['location'],
     },
     {
-      title: 'Iniciado',
+      title: 'Inicio',
       inputName: 'startDate',
       value: formDataProject.startDate,
+      type: 'date',
+      errors: errors?.['startDate'],
     },
     {
-      title: 'A finalizar',
+      title: 'Finalización',
       inputName: 'endDate',
       value: formDataProject.endDate,
+      type: 'date',
+      errors: errors?.['endDate'],
+    },
+    {
+      title: 'Estado',
+      inputName: 'status',
+      option: formDataProject.status,
+      options: statusOptions,
+      type: 'select',
     },
   ]
   if (client) {
+    const clientFields: FieldConfig[] = [
+      {
+        title: 'Cliente',
+        inputName: 'clientName',
+        value: formDataProject.clientName,
+        errors: errors?.['clientName'],
+      },
+      {
+        title: 'Correo',
+        inputName: 'clientEmail',
+        value: formDataProject.clientEmail,
+        errors: errors?.['clientEmail'],
+      },
+    ]
+
     return (
       <CardBody className='flex flex-col gap-4'>
-        <Typography>Cliente: Juan Perez</Typography>
-        <Typography>Correo: 3l8mP@example.com</Typography>
+        {clientFields.map((field) => (
+          <InPlaceEditText
+            key={field.inputName}
+            title={field.title}
+            value={field.value || ''}
+            inputName={field.inputName}
+            errors={field.errors}
+            editedFields={editedFields}
+            handleChangeDataProject={handleChangeDataProject}
+          />
+        ))}
       </CardBody>
     )
   }
+
   if (others) {
+    const othersFields: FieldConfig[] = [
+      {
+        title: 'Arquitecto',
+        inputName: 'architect',
+        value: formDataProject.architect,
+        errors: errors?.['architect'],
+      },
+      {
+        title: 'Constructor',
+        inputName: 'builder',
+        value: formDataProject.builder,
+        errors: errors?.['builder'],
+      },
+      {
+        title: 'Observaciones',
+        inputName: 'notes',
+        value: formDataProject.notes,
+        errors: errors?.['notes'],
+      },
+    ]
+
     return (
       <CardBody className='flex flex-col gap-4'>
-        <Typography>Arquitecto: Alaniz Lopez</Typography>
-        <Typography>Constructor: Constructora XYZ</Typography>
-        <Typography>
-          Observaciones: Tener en cuenta las condiciones climaticas
-        </Typography>
+        {othersFields.map((field) => (
+          <InPlaceEditText
+            key={field.inputName}
+            title={field.title}
+            value={field.value || ''}
+            inputName={field.inputName}
+            errors={field.errors}
+            editedFields={editedFields}
+            handleChangeDataProject={handleChangeDataProject}
+          />
+        ))}
       </CardBody>
     )
   }
   return (
     <CardBody className='flex flex-col gap-4'>
-      {fields.map((field) => (
-        <InPlaceEditText
-          key={field.inputName}
-          title={field.title}
-          value={field.value || ''}
-          inputName={field.inputName}
-          editedFields={editedFields}
-          handleChangeDataProject={handleChangeDataProject}
-        />
-      ))}
+      {fields.map((field) => {
+        switch (field.type) {
+          case 'select':
+            if (field.option && field.options) {
+              return (
+                <InPlaceEditSelect
+                  key={field.inputName}
+                  title={field.title}
+                  option={field.option}
+                  options={field.options}
+                  inputName={field.inputName}
+                  editedFields={editedFields}
+                  handleChangeDataProject={handleChangeDataProject}
+                />
+              )
+            }
+            return null
+
+          case 'date':
+            return (
+              <InPlaceEditDate
+                key={field.inputName}
+                title={field.title}
+                value={field.value || ''}
+                errors={field.errors}
+                inputName={field.inputName}
+                editedFields={editedFields}
+                handleChangeDataProject={handleChangeDataProject}
+              />
+            )
+
+          default:
+            return (
+              <InPlaceEditText
+                key={field.inputName}
+                title={field.title}
+                value={field.value || ''}
+                inputName={field.inputName}
+                errors={field.errors}
+                editedFields={editedFields}
+                handleChangeDataProject={handleChangeDataProject}
+              />
+            )
+        }
+      })}
     </CardBody>
   )
 }

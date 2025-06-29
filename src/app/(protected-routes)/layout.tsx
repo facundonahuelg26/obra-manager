@@ -8,7 +8,7 @@ const PrivateLayout = ({
   return (
     <>
       <Navigation />
-      <main className='sm:min-h-[calc(100vh-65px-56px)] flex-1 lg:ml-64'>
+      <main className='min-h-[calc(100vh-65px-80px)] sm:min-h-[calc(100vh-65px-56px)] flex-1 lg:ml-64'>
         {children}
       </main>
       <Footer />

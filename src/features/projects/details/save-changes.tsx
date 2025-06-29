@@ -12,8 +12,9 @@ import { Form } from '@heroui/form'
 import React from 'react'
 
 const SaveChanges = () => {
-  const { handleSubmit, editedFields } = useEditProjectContext()
+  const { handleSubmit, editedFields, errors } = useEditProjectContext()
   const isEdited = Object.values(editedFields).some(Boolean)
+  const hasErrors = errors && Object.values(errors).some(Boolean)
   return (
     <Form onSubmit={handleSubmit}>
       <Card className='w-full bg-default/5 mb-8'>
@@ -26,7 +27,7 @@ const SaveChanges = () => {
               variant='solid'
               color='primary'
               type='submit'
-              isDisabled={!isEdited}
+              isDisabled={!isEdited || hasErrors}
             >
               Guardar cambios
             </CustomButton>
